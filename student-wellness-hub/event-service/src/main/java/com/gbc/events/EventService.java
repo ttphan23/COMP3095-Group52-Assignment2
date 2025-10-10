@@ -43,6 +43,7 @@ public class EventService {
         repository.deleteById(id);
     }
 
+    @SuppressWarnings("unchecked")
     public List<Map<String, Object>> getResourcesForEvent(Event event) {
         String url = "http://localhost:8082/resources/category/" + event.getCategory();
         return restTemplate.getForObject(url, List.class);

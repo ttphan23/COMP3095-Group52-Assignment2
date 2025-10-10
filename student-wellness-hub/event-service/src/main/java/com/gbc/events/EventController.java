@@ -47,4 +47,10 @@ public class EventController {
         List<Map<String, Object>> resources = service.getResourcesForEvent(event);
         return ResponseEntity.ok(resources);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Event> getEventById(@PathVariable Long id) {
+        return repository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

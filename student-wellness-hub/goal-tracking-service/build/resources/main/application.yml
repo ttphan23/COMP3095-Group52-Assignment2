@@ -1,9 +1,9 @@
+server:
+  port: 8082
+
 spring:
   data:
     mongodb:
-      database: student_wellness
-      host: localhost
-      port: 27017
-
-server:
-  port: 8083
+      database: ${SPRING_DATA_MONGODB_DATABASE:student_wellness}
+      host: ${SPRING_DATA_MONGODB_HOST:localhost}
+      port: ${SPRING_DATA_MONGODB_PORT:27017}

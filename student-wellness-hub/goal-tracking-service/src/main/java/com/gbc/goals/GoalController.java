@@ -62,4 +62,11 @@ public class GoalController {
         List<Map<String, Object>> resources = service.getResourcesForGoal(goal);
         return ResponseEntity.ok(resources);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Goal> getGoalById(@PathVariable String id) {
+        return repository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }

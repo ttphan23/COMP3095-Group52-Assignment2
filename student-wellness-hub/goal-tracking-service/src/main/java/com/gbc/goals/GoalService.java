@@ -59,6 +59,7 @@ public class GoalService {
                 .orElseThrow(() -> new RuntimeException("Goal not found: " + id));
     }
 
+    @SuppressWarnings("unchecked")
     public List<Map<String, Object>> getResourcesForGoal(Goal goal) {
         String url = "http://localhost:8082/resources/category/" + goal.getCategory();
         return restTemplate.getForObject(url, List.class);
