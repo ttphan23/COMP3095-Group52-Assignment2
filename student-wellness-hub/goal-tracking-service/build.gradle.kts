@@ -20,6 +20,7 @@ dependencies {
     // Core Spring + MongoDB
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     // Testing + Containers
     testImplementation("org.springframework.boot:spring-boot-starter-test")
