@@ -53,4 +53,11 @@ public class EventController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+    @PostMapping("/{id}/register")
+    public ResponseEntity<Event> register(
+            @PathVariable Long id,
+            @RequestParam String studentEmail) {
+        return ResponseEntity.ok(service.registerStudent(id, studentEmail));
+    }
+
 }

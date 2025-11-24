@@ -2,9 +2,7 @@ package com.gbc.wellness.service;
 
 import com.gbc.wellness.model.Resource;
 import com.gbc.wellness.repository.ResourceRepository;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,12 +16,13 @@ public class ResourceService {
         this.repository = repository;
     }
 
-    @Cacheable(value = "resources", key = "#id")
+    // READS
+    @Cacheable(value = "resourceById", key = "#id")
     public Resource getResource(Long id) {
         return repository.findById(id).orElseThrow();
     }
 
-    @Cacheable(value = "resources")
+    @Cacheable(value = "resourcesAll")
     public List<Resource> getAllResources() {
         return repository.findAll();
     }
@@ -38,12 +37,27 @@ public class ResourceService {
         return repository.findByTitleContainingIgnoreCase(keyword);
     }
 
-    @CachePut(value = "resources", key = "#result.resourceId")
+    // WRITES
+    @Caching(
+            put = {@CachePut(value = "resourceById", key = "#result.resourceId")},
+            evict = {
+                    @CacheEvict(value = "resourcesAll", allEntries = true),
+                    @CacheEvict(value = "resourcesByCategory", allEntries = true),
+                    @CacheEvict(value = "resourcesByKeyword", allEntries = true)
+            }
+    )
     public Resource saveResource(Resource resource) {
         return repository.save(resource);
     }
 
-    @CacheEvict(value = "resources", key = "#id")
+    @Caching(
+            evict = {
+                    @CacheEvict(value = "resourceById", key = "#id"),
+                    @CacheEvict(value = "resourcesAll", allEntries = true),
+                    @CacheEvict(value = "resourcesByCategory", allEntries = true),
+                    @CacheEvict(value = "resourcesByKeyword", allEntries = true)
+            }
+    )
     public void deleteResource(Long id) {
         repository.deleteById(id);
     }

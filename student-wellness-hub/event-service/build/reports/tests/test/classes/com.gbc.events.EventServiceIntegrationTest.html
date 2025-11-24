@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.595s</div>
+<div class="counter">1.164s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">contextLoads()</td>
-<td class="success">0.595s</td>
+<td class="success">1.164s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,29 +87,39 @@
 <div class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>21:05:37.357 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.gbc.events.EventServiceIntegrationTest]: EventServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-21:05:37.593 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.gbc.events.EventServiceApplication for test class com.gbc.events.EventServiceIntegrationTest
-21:05:37.811 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
-21:05:37.815 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
-21:05:38.111 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
-21:05:38.482 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
-21:05:38.484 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
-21:05:38.528 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
-  Server Version: 28.5.1
+<pre>22:19:38.531 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.gbc.events.EventServiceIntegrationTest]: EventServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:19:39.021 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.gbc.events.EventServiceApplication for test class com.gbc.events.EventServiceIntegrationTest
+22:19:39.543 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+22:19:39.553 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+22:19:40.023 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+22:19:40.704 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+22:19:40.706 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+22:19:40.744 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 28.3.3
   API Version: 1.51
   Operating System: Docker Desktop
-  Total Memory: 15807 MB
-21:05:38.569 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Creating container for image: testcontainers/ryuk:0.5.1
-21:05:38.763 [Test worker] INFO org.testcontainers.utility.RegistryAuthLocator -- Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
-21:05:38.927 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Container testcontainers/ryuk:0.5.1 is starting: 12ddb40de0f2e8fe9f6577117cfdb56b39e2551d62d987319ddc04fb9fb7b2f3
-21:05:39.528 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Container testcontainers/ryuk:0.5.1 started in PT0.958215S
-21:05:39.542 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
-21:05:39.543 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
-21:05:39.543 [Test worker] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
-21:05:39.545 [Test worker] INFO tc.postgres:15 -- Creating container for image: postgres:15
-21:05:39.622 [Test worker] INFO tc.postgres:15 -- Container postgres:15 is starting: 77031d35d817dc077a5acb4d1391000883f119f25866997d47cfa93b6f3974fd
-21:05:42.286 [Test worker] INFO tc.postgres:15 -- Container postgres:15 started in PT2.7409451S
-21:05:42.287 [Test worker] INFO tc.postgres:15 -- Container is started (JDBC URL: jdbc:postgresql://localhost:60808/wellnessdb?loggerLevel=OFF)
+  Total Memory: 15805 MB
+22:19:41.008 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Pulling docker image: testcontainers/ryuk:0.5.1. Please be patient; this may take some time but only needs to be done once.
+22:19:42.136 [docker-java-stream--1170010968] INFO tc.testcontainers/ryuk:0.5.1 -- Starting to pull image
+22:19:42.187 [docker-java-stream--1170010968] INFO tc.testcontainers/ryuk:0.5.1 -- Pulling image layers:  0 pending,  0 downloaded,  0 extracted, (0 bytes/0 bytes)
+22:19:42.990 [docker-java-stream--1170010968] INFO tc.testcontainers/ryuk:0.5.1 -- Pulling image layers:  2 pending,  1 downloaded,  0 extracted, (2 MB/? MB)
+22:19:43.101 [docker-java-stream--1170010968] INFO tc.testcontainers/ryuk:0.5.1 -- Pulling image layers:  2 pending,  1 downloaded,  1 extracted, (2 MB/? MB)
+22:19:43.190 [docker-java-stream--1170010968] INFO tc.testcontainers/ryuk:0.5.1 -- Pulling image layers:  1 pending,  2 downloaded,  1 extracted, (5 MB/? MB)
+22:19:43.292 [docker-java-stream--1170010968] INFO tc.testcontainers/ryuk:0.5.1 -- Pulling image layers:  0 pending,  3 downloaded,  1 extracted, (5 MB/5 MB)
+22:19:43.302 [docker-java-stream--1170010968] INFO tc.testcontainers/ryuk:0.5.1 -- Pulling image layers:  0 pending,  3 downloaded,  2 extracted, (5 MB/5 MB)
+22:19:43.392 [docker-java-stream--1170010968] INFO tc.testcontainers/ryuk:0.5.1 -- Pulling image layers:  0 pending,  3 downloaded,  3 extracted, (5 MB/5 MB)
+22:19:43.408 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Image testcontainers/ryuk:0.5.1 pull took PT2.3972412S
+22:19:43.409 [docker-java-stream--1170010968] INFO tc.testcontainers/ryuk:0.5.1 -- Pull complete. 3 layers, pulled in 1s (downloaded 5 MB at 5 MB/s)
+22:19:43.555 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Creating container for image: testcontainers/ryuk:0.5.1
+22:19:43.860 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Container testcontainers/ryuk:0.5.1 is starting: 55f15bd46b26b42806b8c3ef862b9cd03f3e892e18fb4d456ebc6a7c14876161
+22:19:44.623 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Container testcontainers/ryuk:0.5.1 started in PT1.0681812S
+22:19:44.638 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+22:19:44.638 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+22:19:44.640 [Test worker] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+22:19:44.642 [Test worker] INFO tc.postgres:15 -- Creating container for image: postgres:15
+22:19:44.820 [Test worker] INFO tc.postgres:15 -- Container postgres:15 is starting: 6df784ed82feb4f3a30b01c37a9dd448b2051b33d3c295ac8d569202aaca47f0
+22:19:47.678 [Test worker] INFO tc.postgres:15 -- Container postgres:15 started in PT3.03611S
+22:19:47.680 [Test worker] INFO tc.postgres:15 -- Container is started (JDBC URL: jdbc:postgresql://localhost:51814/wellnessdb?loggerLevel=OFF)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -120,25 +130,26 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2025-10-09T21:05:42.915-04:00  INFO 26528 --- [    Test worker] c.g.events.EventServiceIntegrationTest   : Starting EventServiceIntegrationTest using Java 17.0.16 with PID 26528 (started by vyn13 in C:\Users\vyn13\OneDrive\Desktop\COMP3095-Group52-Assignment1\student-wellness-hub\event-service)
-2025-10-09T21:05:42.917-04:00  INFO 26528 --- [    Test worker] c.g.events.EventServiceIntegrationTest   : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2025-10-09T21:05:44.008-04:00  INFO 26528 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-10-09T21:05:44.117-04:00  INFO 26528 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86 ms. Found 1 JPA repository interface.
-2025-10-09T21:05:45.185-04:00  INFO 26528 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-10-09T21:05:45.328-04:00  INFO 26528 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-10-09T21:05:45.392-04:00  INFO 26528 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-10-09T21:05:46.125-04:00  INFO 26528 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-10-09T21:05:46.205-04:00  INFO 26528 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-10-09T21:05:46.545-04:00  INFO 26528 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6ed7b9c5
-2025-10-09T21:05:46.551-04:00  INFO 26528 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-10-09T21:05:46.629-04:00  WARN 26528 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-10-09T21:05:48.246-04:00  INFO 26528 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-07T22:19:49.159-05:00  INFO 10264 --- [    Test worker] c.g.events.EventServiceIntegrationTest   : Starting EventServiceIntegrationTest using Java 17.0.12 with PID 10264 (started by phant in C:\Users\phant\Desktop\comp3095-group\COMP3095-Group52-Assignment1\student-wellness-hub\event-service)
+2025-11-07T22:19:49.159-05:00  INFO 10264 --- [    Test worker] c.g.events.EventServiceIntegrationTest   : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-11-07T22:19:51.762-05:00  INFO 10264 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-07T22:19:51.892-05:00  INFO 10264 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 1 JPA repository interface.
+2025-11-07T22:19:53.663-05:00  INFO 10264 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-07T22:19:53.927-05:00  INFO 10264 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-11-07T22:19:54.046-05:00  INFO 10264 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-07T22:19:55.250-05:00  INFO 10264 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-07T22:19:55.370-05:00  INFO 10264 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-07T22:19:56.030-05:00  INFO 10264 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5c43cb12
+2025-11-07T22:19:56.036-05:00  INFO 10264 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-07T22:19:56.153-05:00  WARN 10264 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-07T22:19:59.264-05:00  INFO 10264 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: create table event_registered_students (event_event_id bigint not null, registered_students varchar(255))
 Hibernate: create table events (event_id bigint generated by default as identity, capacity integer not null, category varchar(255), date date, description varchar(255), location varchar(255), title varchar(255), primary key (event_id))
 Hibernate: alter table if exists event_registered_students add constraint FK83i4wxlesh213th2g2bsc37p7 foreign key (event_event_id) references events
-2025-10-09T21:05:48.338-04:00  INFO 26528 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-10-09T21:05:49.360-04:00  WARN 26528 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-10-09T21:05:50.025-04:00  INFO 26528 --- [    Test worker] c.g.events.EventServiceIntegrationTest   : Started EventServiceIntegrationTest in 7.664 seconds (process running for 14.33)
+2025-11-07T22:19:59.416-05:00  INFO 10264 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-07T22:20:01.267-05:00  WARN 10264 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-07T22:20:03.479-05:00  INFO 10264 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2025-11-07T22:20:03.706-05:00  INFO 10264 --- [    Test worker] c.g.events.EventServiceIntegrationTest   : Started EventServiceIntegrationTest in 15.861 seconds (process running for 27.949)
 </pre>
 </span>
 </div>
@@ -150,7 +161,7 @@ Hibernate: alter table if exists event_registered_students add constraint FK83i4
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.0.0</a> at Oct. 9, 2025, 9:05:51 p.m.</p>
+<a href="https://www.gradle.org">Gradle 9.0.0</a> at Nov 7, 2025, 10:20:06 p.m.</p>
 </div>
 </div>
 </body>

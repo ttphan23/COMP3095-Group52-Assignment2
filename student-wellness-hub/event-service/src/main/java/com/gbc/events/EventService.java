@@ -43,9 +43,15 @@ public class EventService {
         repository.deleteById(id);
     }
 
+    public Event registerStudent(Long id, String email) {
+        Event e = repository.findById(id).orElseThrow();
+        e.getRegisteredStudents().add(email);
+        return repository.save(e);
+    }
+
     @SuppressWarnings("unchecked")
     public List<Map<String, Object>> getResourcesForEvent(Event event) {
-        String url = "http://localhost:8082/resources/category/" + event.getCategory();
+        String url = "http://wellness-resource-service:8081/resources/category/" + event.getCategory();
         return restTemplate.getForObject(url, List.class);
     }
 }
