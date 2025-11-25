@@ -1,8 +1,11 @@
 package com.gbc.goals;
 
+import com.gbc.goals.kafka.GoalCompletedProducer;
+import com.gbc.schemas.GoalCompletedEvent;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
@@ -11,10 +14,14 @@ public class GoalService {
 
     private final GoalRepository repository;
     private final RestTemplate restTemplate;
+    private final GoalCompletedProducer producer;
 
-    public GoalService(GoalRepository repository, RestTemplate restTemplate) {
+    public GoalService(GoalRepository repository,
+                       RestTemplate restTemplate,
+                       GoalCompletedProducer producer) {
         this.repository = repository;
         this.restTemplate = restTemplate;
+        this.producer = producer;
     }
 
     public List<Goal> getAllGoals() {
@@ -54,7 +61,17 @@ public class GoalService {
         return repository.findById(id)
                 .map(goal -> {
                     goal.setStatus("completed");
-                    return repository.save(goal);
+                    Goal saved = repository.save(goal);
+
+                    GoalCompletedEvent event = GoalCompletedEvent.newBuilder()
+                            .setGoalId(saved.getGoalId())
+                            .setCategory(saved.getCategory())
+                            .setCompletedAt(Instant.now().toString())
+                            .build();
+
+                    producer.publish(event);
+
+                    return saved;
                 })
                 .orElseThrow(() -> new RuntimeException("Goal not found: " + id));
     }

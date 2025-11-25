@@ -1,5 +1,6 @@
 package com.gbc.events;
 
+import com.gbc.events.kafka.GoalCompletedConsumer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +13,14 @@ public class EventController {
 
     private final EventService service;
     private final EventRepository repository;
+    private final GoalCompletedConsumer consumer;
 
-    public EventController(EventService service, EventRepository repository) {
+    public EventController(EventService service,
+                           EventRepository repository,
+                           GoalCompletedConsumer consumer) {
         this.service = service;
         this.repository = repository;
+        this.consumer = consumer;
     }
 
     @GetMapping
@@ -47,12 +52,14 @@ public class EventController {
         List<Map<String, Object>> resources = service.getResourcesForEvent(event);
         return ResponseEntity.ok(resources);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Event> getEventById(@PathVariable Long id) {
         return repository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
     @PostMapping("/{id}/register")
     public ResponseEntity<Event> register(
             @PathVariable Long id,
@@ -60,4 +67,11 @@ public class EventController {
         return ResponseEntity.ok(service.registerStudent(id, studentEmail));
     }
 
+    // -------------------------
+    // NEW: Kafka recommendations
+    // -------------------------
+    @GetMapping("/recommendations/{goalId}")
+    public List<Event> recommendationsForGoal(@PathVariable String goalId) {
+        return consumer.getRecommendations(goalId);
+    }
 }

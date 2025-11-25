@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "events")
@@ -21,6 +22,7 @@ public class Event {
     private String category;
 
     @ElementCollection
+    @JsonIgnore
     private Set<String> registeredStudents = new HashSet<>();
 
     // Getters and setters
@@ -42,11 +44,9 @@ public class Event {
     public int getCapacity() { return capacity; }
     public void setCapacity(int capacity) { this.capacity = capacity; }
 
-    public Set<String> getRegisteredStudents() { return registeredStudents; }
-    public void setRegisteredStudents(Set<String> registeredStudents) { this.registeredStudents = registeredStudents; }
-
     public String getCategory() { return category; }
-
     public void setCategory(String category) { this.category = category; }
 
+    public Set<String> getRegisteredStudents() { return registeredStudents; }
+    public void setRegisteredStudents(Set<String> registeredStudents) { this.registeredStudents = registeredStudents; }
 }

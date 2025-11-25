@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "1817f213-bc10-421a-bfa3-e1c470832bd3",
+		"name": "Student Wellness Hub – Part 2 (Kafka Async Flow)",
+		"description": "Demo collection for Part 2: Avro + Kafka + Schema Registry async flow.\nOrder: create resource → create event → create goal (saves goalId) → complete goal (publishes Kafka event) → get recommendations (consumer cache).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48177653",
+		"_collection_link": "https://ttphan23-5803358.postman.co/workspace/Thinh's-Workspace~b223411a-202f-4f2b-8042-babd41e8fd61/collection/48177653-1817f213-bc10-421a-bfa3-e1c470832bd3?action=share&source=collection_link&creator=48177653"
+	},
+	"item": [
+		{
+			"name": "1) Create Resource (wellness-resource-service)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Mindfulness Guide\",\n  \"description\": \"..\",\n  \"category\": \"mindfulness\",\n  \"url\": \"http://ex\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/resources",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2) Create Event (event-service)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Meditation Circle\",\n  \"description\": \"..\",\n  \"date\": \"2025-12-01\",\n  \"location\": \"Room A\",\n  \"capacity\": 30,\n  \"category\": \"mindfulness\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8083/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3) Create Goal (goal-tracking-service) — saves goalId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"let json = pm.response.json();",
+							"pm.collectionVariables.set(\"goalId\", json.goalId);",
+							"pm.test(\"goalId saved\", function () {",
+							"    pm.expect(pm.collectionVariables.get(\"goalId\")).to.be.ok;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Meditate\",\n  \"description\": \"..\",\n  \"targetDate\": \"2025-12-01\",\n  \"status\": \"in-progress\",\n  \"category\": \"mindfulness\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/goals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"goals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4) Complete Goal (publishes Kafka event)",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/goals/69252cd93340e37843d06f2c/complete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"goals",
+						"69252cd93340e37843d06f2c",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5) Get Recommendations (event-service consumes Kafka)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/events/recommendations/69252cd93340e37843d06f2c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"events",
+						"recommendations",
+						"69252cd93340e37843d06f2c"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "goalId",
+			"value": ""
+		}
+	]
+}
