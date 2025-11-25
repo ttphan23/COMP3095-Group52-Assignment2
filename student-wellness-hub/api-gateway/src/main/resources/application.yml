@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: api-gateway
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://keycloak:8080/realms/wellnesshub/protocol/openid-connect/certs
+
+  cloud:
+    gateway:
+      routes:
+        - id: wellness-resource-service
+          uri: http://wellness-resource-service:8081
+          predicates:
+            - Path=/resources/**
+
+        - id: goal-tracking-service
+          uri: http://goal-tracking-service:8082
+          predicates:
+            - Path=/goals/**
+
+        - id: event-service
+          uri: http://event-service:8083
+          predicates:
+            - Path=/events/**

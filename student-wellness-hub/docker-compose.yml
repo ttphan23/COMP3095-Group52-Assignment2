@@ -13,6 +13,7 @@ services:
       POSTGRES_DB: wellnessdb
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./postgres-init:/docker-entrypoint-initdb.d   # creates keycloak DB on first boot
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -45,11 +46,32 @@ services:
     restart: always
     ports:
       - "6379:6379"
+    volumes:
+      - redis_data:/data
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - student-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:25.0.6
+    container_name: keycloak
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: password
+    ports:
+      - "8090:8080"   # host 8090 so it doesn't clash with gateway
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - student-network
 
@@ -106,6 +128,22 @@ services:
         condition: service_healthy
       wellness-resource-service:
         condition: service_started
+    networks:
+      - student-network
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      KEYCLOAK_ISSUER_URI: http://keycloak:8080/realms/wellnesshub
+    depends_on:
+      - keycloak
+      - wellness-resource-service
+      - goal-tracking-service
+      - event-service
     networks:
       - student-network
 
