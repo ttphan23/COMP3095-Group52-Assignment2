@@ -1,6 +1,9 @@
+import com.github.davidmc24.gradle.plugin.avro.GenerateAvroJavaTask
+
 plugins {
     id("org.springframework.boot") version "3.3.4"
     id("io.spring.dependency-management") version "1.1.6"
+    id("com.github.davidmc24.gradle.plugin.avro") version "1.9.1"
     java
 }
 
@@ -14,6 +17,7 @@ java {
 
 repositories {
     mavenCentral()
+    maven("https://packages.confluent.io/maven/")
 }
 
 dependencies {
@@ -23,20 +27,30 @@ dependencies {
     implementation("org.postgresql:postgresql")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
+    // Kafka Consumer + Avro
+    implementation("org.springframework.kafka:spring-kafka")
+    implementation("io.confluent:kafka-avro-serializer:7.6.1")
+    implementation("org.apache.avro:avro:1.11.3")
+
     // Testing
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-
-    // Testcontainers for PostgreSQL + JUnit 5
     testImplementation("org.testcontainers:testcontainers:1.19.3")
     testImplementation("org.testcontainers:postgresql:1.19.3")
     testImplementation("org.testcontainers:junit-jupiter:1.19.3")
-
-    // Fix JUnit runtime launcher issue
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
 }
 
+sourceSets {
+    named("main") {
+        java {
+            srcDir("$buildDir/generated-main-avro-java")
+        }
+    }
+}
 
+tasks.withType<GenerateAvroJavaTask> {
+    stringType.set("String")
+}
 
 tasks.withType<Test> {
     useJUnitPlatform()
