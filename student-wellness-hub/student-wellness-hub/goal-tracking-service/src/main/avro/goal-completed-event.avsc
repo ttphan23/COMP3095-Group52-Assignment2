@@ -1,0 +1,10 @@
+{
+  "type": "record",
+  "name": "GoalCompletedEvent",
+  "namespace": "com.gbc.schemas",
+  "fields": [
+    { "name": "goalId", "type": "string" },
+    { "name": "category", "type": "string" },
+    { "name": "completedAt", "type": "string" }
+  ]
+}

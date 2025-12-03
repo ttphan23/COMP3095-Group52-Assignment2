@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "5900197f-518a-42cb-a02f-4e859cc3fdc7",
+		"name": "Student Wellness Hub - Part 1 (Security)",
+		"description": "Security + Keycloak + API Gateway demo for COMP3095 Assignment 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48177653",
+		"_collection_link": "https://ttphan23-5803358.postman.co/workspace/Thinh's-Workspace~b223411a-202f-4f2b-8042-babd41e8fd61/collection/48177653-5900197f-518a-42cb-a02f-4e859cc3fdc7?action=share&source=collection_link&creator=48177653"
+	},
+	"item": [
+		{
+			"name": "1. Student Login → Get Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password"
+						},
+						{
+							"key": "client_id",
+							"value": "wellness-gateway"
+						},
+						{
+							"key": "client_secret",
+							"value": "admd9NGprHAYFuS8tCEfRdoiKjG51zPq"
+						},
+						{
+							"key": "username",
+							"value": "student1"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8090/realms/wellnesshub/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"realms",
+						"wellnesshub",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Staff Login → Get Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjUTd5Rng3SFFwcnpLVkotMVpUQzF0M1lwU3Zrb0ZmalZFdUYyZVdseXNRIn0.eyJleHAiOjE3NjQwMzU2NDEsImlhdCI6MTc2NDAzNTM0MSwianRpIjoiYzUxYTg5NTUtNWFhMy00NTcxLWE1ZjgtNDI0NjFjMGIzNTg0IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDkwL3JlYWxtcy93ZWxsbmVzc2h1YiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI0MmY5M2NiMy02ZWNlLTRjNGUtOTdiNS1hNTIwNjY4NjViNmUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWxsbmVzcy1nYXRld2F5Iiwic2lkIjoiOGNlZThhMTAtNWRlYS00N2U0LWI1MWMtNGIyZmQzZGI0ZDhjIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy13ZWxsbmVzc2h1YiIsInN0dWRlbnQiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJTdHVkZW50IE9uZSIsInByZWZlcnJlZF91c2VybmFtZSI6InN0dWRlbnQxIiwiZ2l2ZW5fbmFtZSI6IlN0dWRlbnQiLCJmYW1pbHlfbmFtZSI6Ik9uZSIsImVtYWlsIjoic3R1ZGVudDFAZW1haWwuY29tIn0.hir26ghyOou_nAyFSO8hSLC8lYvfOh9F63L0F2Iz3QOa3SIU7Jk3oesTvj6_Df-viZ8QDMAsy7Jy5N6l3MX63xVTb-IiBCX4Q5iQxRjEK2G1vgSVxEd7tjSmGyMfcnKUx0gPC2mpKcIMhmtYx-gybmC1pNC6PoG01PuZpt2RJdXQVEuO3v1nDNhXwn3_ttPrdWY931Xvh5lDWeBmk4J9NF5P4LCR6S4YPIrngOIix0AeRzIycL0G5EDVQcPeoUtZGtCezNbhWSZYSyRM1nlTiFQLn6yV3JSMrFiGkfO-42yIUuaj7w4QO-tuS7vGMGYpHknCaHV3tkiJnLiiFgqU7A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password"
+						},
+						{
+							"key": "client_id",
+							"value": "wellness-gateway"
+						},
+						{
+							"key": "client_secret",
+							"value": "admd9NGprHAYFuS8tCEfRdoiKjG51zPq"
+						},
+						{
+							"key": "username",
+							"value": "staff1"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8090/realms/wellnesshub/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"realms",
+						"wellnesshub",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Student Allowed → Create Goal",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjUTd5Rng3SFFwcnpLVkotMVpUQzF0M1lwU3Zrb0ZmalZFdUYyZVdseXNRIn0.eyJleHAiOjE3NjQwMzQwMDUsImlhdCI6MTc2NDAzMzcwNSwianRpIjoiMDY0ZGZmOGQtNDgzMi00MGQwLWE3OGUtOWU0OTBlMTk5OTc5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDkwL3JlYWxtcy93ZWxsbmVzc2h1YiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI0MmY5M2NiMy02ZWNlLTRjNGUtOTdiNS1hNTIwNjY4NjViNmUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWxsbmVzcy1nYXRld2F5Iiwic2lkIjoiMzJkOTRjNDUtY2Q3ZS00Y2Q3LWE4ZDgtNmQ1YjJlNTQzOGI0IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy13ZWxsbmVzc2h1YiIsInN0dWRlbnQiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJTdHVkZW50IE9uZSIsInByZWZlcnJlZF91c2VybmFtZSI6InN0dWRlbnQxIiwiZ2l2ZW5fbmFtZSI6IlN0dWRlbnQiLCJmYW1pbHlfbmFtZSI6Ik9uZSIsImVtYWlsIjoic3R1ZGVudDFAZW1haWwuY29tIn0.jKO0pRZr3wdSZUiAPvifGzpggnXIl4FMEcOw0eaultDdW84Thek2VHxRJAvp3GIItamv9xERHCrxcbaz9HVlwx1ttpsbmo3JPkAr4Xtf_Kzml1myOBUgYaxsg_SZn-MVc3BuV5LKS-HqJmuJ6H2S4CG9EWePxxijSNeKRlCuS-IoBvZmrzI1rV-wW9j2MFpk_gwR5UZAhrOFlrj0w4rAN4og3ewYs_FQK9PfYLLLjMX10LXNFrtAkM4-987aozjMMtsw74avxiAKtBGNHwSUJViTMMFhzfi45JVKdDo_jL-VmcecDncHSrqi9I_FWUGBTYU2j1p0IYTQS8oG5auzkg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Study 30 minutes\",\r\n    \"description\": \"COMP3095 review\",\r\n    \"targetDate\": \"2025-12-31\",\r\n    \"status\": \"in-progress\",\r\n    \"category\": \"academic\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/goals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"goals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Student Allowed → Register for Event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjUTd5Rng3SFFwcnpLVkotMVpUQzF0M1lwU3Zrb0ZmalZFdUYyZVdseXNRIn0.eyJleHAiOjE3NjQwMzU2NDEsImlhdCI6MTc2NDAzNTM0MSwianRpIjoiYzUxYTg5NTUtNWFhMy00NTcxLWE1ZjgtNDI0NjFjMGIzNTg0IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDkwL3JlYWxtcy93ZWxsbmVzc2h1YiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI0MmY5M2NiMy02ZWNlLTRjNGUtOTdiNS1hNTIwNjY4NjViNmUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWxsbmVzcy1nYXRld2F5Iiwic2lkIjoiOGNlZThhMTAtNWRlYS00N2U0LWI1MWMtNGIyZmQzZGI0ZDhjIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy13ZWxsbmVzc2h1YiIsInN0dWRlbnQiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJTdHVkZW50IE9uZSIsInByZWZlcnJlZF91c2VybmFtZSI6InN0dWRlbnQxIiwiZ2l2ZW5fbmFtZSI6IlN0dWRlbnQiLCJmYW1pbHlfbmFtZSI6Ik9uZSIsImVtYWlsIjoic3R1ZGVudDFAZW1haWwuY29tIn0.hir26ghyOou_nAyFSO8hSLC8lYvfOh9F63L0F2Iz3QOa3SIU7Jk3oesTvj6_Df-viZ8QDMAsy7Jy5N6l3MX63xVTb-IiBCX4Q5iQxRjEK2G1vgSVxEd7tjSmGyMfcnKUx0gPC2mpKcIMhmtYx-gybmC1pNC6PoG01PuZpt2RJdXQVEuO3v1nDNhXwn3_ttPrdWY931Xvh5lDWeBmk4J9NF5P4LCR6S4YPIrngOIix0AeRzIycL0G5EDVQcPeoUtZGtCezNbhWSZYSyRM1nlTiFQLn6yV3JSMrFiGkfO-42yIUuaj7w4QO-tuS7vGMGYpHknCaHV3tkiJnLiiFgqU7A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/events/1/register?studentEmail=alice@email.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"1",
+						"register"
+					],
+					"query": [
+						{
+							"key": "studentEmail",
+							"value": "alice@email.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Student Blocked → Create Resource (403)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjUTd5Rng3SFFwcnpLVkotMVpUQzF0M1lwU3Zrb0ZmalZFdUYyZVdseXNRIn0.eyJleHAiOjE3NjQwMzU2NDEsImlhdCI6MTc2NDAzNTM0MSwianRpIjoiYzUxYTg5NTUtNWFhMy00NTcxLWE1ZjgtNDI0NjFjMGIzNTg0IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDkwL3JlYWxtcy93ZWxsbmVzc2h1YiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI0MmY5M2NiMy02ZWNlLTRjNGUtOTdiNS1hNTIwNjY4NjViNmUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWxsbmVzcy1nYXRld2F5Iiwic2lkIjoiOGNlZThhMTAtNWRlYS00N2U0LWI1MWMtNGIyZmQzZGI0ZDhjIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy13ZWxsbmVzc2h1YiIsInN0dWRlbnQiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJTdHVkZW50IE9uZSIsInByZWZlcnJlZF91c2VybmFtZSI6InN0dWRlbnQxIiwiZ2l2ZW5fbmFtZSI6IlN0dWRlbnQiLCJmYW1pbHlfbmFtZSI6Ik9uZSIsImVtYWlsIjoic3R1ZGVudDFAZW1haWwuY29tIn0.hir26ghyOou_nAyFSO8hSLC8lYvfOh9F63L0F2Iz3QOa3SIU7Jk3oesTvj6_Df-viZ8QDMAsy7Jy5N6l3MX63xVTb-IiBCX4Q5iQxRjEK2G1vgSVxEd7tjSmGyMfcnKUx0gPC2mpKcIMhmtYx-gybmC1pNC6PoG01PuZpt2RJdXQVEuO3v1nDNhXwn3_ttPrdWY931Xvh5lDWeBmk4J9NF5P4LCR6S4YPIrngOIix0AeRzIycL0G5EDVQcPeoUtZGtCezNbhWSZYSyRM1nlTiFQLn6yV3JSMrFiGkfO-42yIUuaj7w4QO-tuS7vGMGYpHknCaHV3tkiJnLiiFgqU7A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"Yoga Session\", \"description\": \"Health resource\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/resources",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Staff Allowed → Create Resource",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjUTd5Rng3SFFwcnpLVkotMVpUQzF0M1lwU3Zrb0ZmalZFdUYyZVdseXNRIn0.eyJleHAiOjE3NjQwMzYyNjEsImlhdCI6MTc2NDAzNTk2MSwianRpIjoiNDRmOTE3ZjctYTc0Zi00M2M3LTg5MjYtNmM0MmI1MTBmN2JlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDkwL3JlYWxtcy93ZWxsbmVzc2h1YiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJiZjYxMWJhZi05MDBjLTQ5NjctYjgwOS0zZTYxNWVhNGY2MTMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWxsbmVzcy1nYXRld2F5Iiwic2lkIjoiNDVkYmY4Y2UtZjgwZS00OGU0LTk5ZjAtNzY3NjBmNGI4Mjc4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy13ZWxsbmVzc2h1YiIsIm9mZmxpbmVfYWNjZXNzIiwic3RhZmYiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3RhZmYgT25lIiwicHJlZmVycmVkX3VzZXJuYW1lIjoic3RhZmYxIiwiZ2l2ZW5fbmFtZSI6IlN0YWZmIiwiZmFtaWx5X25hbWUiOiJPbmUiLCJlbWFpbCI6InN0YWZmMUBlbWFpbC5jb20ifQ.pKiUh0msJ4hgEG2LB5qvoKUvyKm4-eWbC0yFylSQ9gLB2uiUIk4gF1_B2_bzyW7rgCoKCPVOVwKhoh7kOeCcMc8JaPT1wGznIqlsuabV6EE-Ct8c3AmFufJXwKE5MLcYyXi2fI-MYcbaW9FyduF5LjwRoID4-eaCxcVaM3CLa-ZHvzVcCl7dbmJctpReC3NGV6Dye6H6DDeXCgix0BbYiMqjHbmhTW__cNyz1QZ_bKXazWFF1nFofm2D0iZYcevY68zEVAV5Moed21p1zGPMUre6Ha4q_jQU92gmEfpEB-2DWHexyeY39xQfsQMX-YQR4ZqX1OkgNkXJj3hnZVPZXg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"Mental Health Workshop\", \"description\": \"Staff-only resource creation\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/resources",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ALL Goals (Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjUTd5Rng3SFFwcnpLVkotMVpUQzF0M1lwU3Zrb0ZmalZFdUYyZVdseXNRIn0.eyJleHAiOjE3NjQwMzYyNjEsImlhdCI6MTc2NDAzNTk2MSwianRpIjoiNDRmOTE3ZjctYTc0Zi00M2M3LTg5MjYtNmM0MmI1MTBmN2JlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDkwL3JlYWxtcy93ZWxsbmVzc2h1YiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJiZjYxMWJhZi05MDBjLTQ5NjctYjgwOS0zZTYxNWVhNGY2MTMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWxsbmVzcy1nYXRld2F5Iiwic2lkIjoiNDVkYmY4Y2UtZjgwZS00OGU0LTk5ZjAtNzY3NjBmNGI4Mjc4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy13ZWxsbmVzc2h1YiIsIm9mZmxpbmVfYWNjZXNzIiwic3RhZmYiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3RhZmYgT25lIiwicHJlZmVycmVkX3VzZXJuYW1lIjoic3RhZmYxIiwiZ2l2ZW5fbmFtZSI6IlN0YWZmIiwiZmFtaWx5X25hbWUiOiJPbmUiLCJlbWFpbCI6InN0YWZmMUBlbWFpbC5jb20ifQ.pKiUh0msJ4hgEG2LB5qvoKUvyKm4-eWbC0yFylSQ9gLB2uiUIk4gF1_B2_bzyW7rgCoKCPVOVwKhoh7kOeCcMc8JaPT1wGznIqlsuabV6EE-Ct8c3AmFufJXwKE5MLcYyXi2fI-MYcbaW9FyduF5LjwRoID4-eaCxcVaM3CLa-ZHvzVcCl7dbmJctpReC3NGV6Dye6H6DDeXCgix0BbYiMqjHbmhTW__cNyz1QZ_bKXazWFF1nFofm2D0iZYcevY68zEVAV5Moed21p1zGPMUre6Ha4q_jQU92gmEfpEB-2DWHexyeY39xQfsQMX-YQR4ZqX1OkgNkXJj3hnZVPZXg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/goals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"goals"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}

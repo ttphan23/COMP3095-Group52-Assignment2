@@ -16,17 +16,94 @@ spring:
   cloud:
     gateway:
       routes:
+        # Swagger UI routes - consolidated API documentation
+        - id: wellness-resource-swagger
+          uri: http://wellness-resource-service:8081
+          predicates:
+            - Path=/api/resources/swagger-ui/**,/api/resources/api-docs/**
+          filters:
+            - RewritePath=/api/resources/(?<segment>.*), /${segment}
+
+        - id: goal-tracking-swagger
+          uri: http://goal-tracking-service:8082
+          predicates:
+            - Path=/api/goals/swagger-ui/**,/api/goals/api-docs/**
+          filters:
+            - RewritePath=/api/goals/(?<segment>.*), /${segment}
+
+        - id: event-service-swagger
+          uri: http://event-service:8083
+          predicates:
+            - Path=/api/events/swagger-ui/**,/api/events/api-docs/**
+          filters:
+            - RewritePath=/api/events/(?<segment>.*), /${segment}
+
+        # Main service routes
         - id: wellness-resource-service
           uri: http://wellness-resource-service:8081
           predicates:
             - Path=/resources/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: wellnessResourceCircuitBreaker
+                fallbackUri: forward:/fallback/resources
 
         - id: goal-tracking-service
           uri: http://goal-tracking-service:8082
           predicates:
             - Path=/goals/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: goalTrackingCircuitBreaker
+                fallbackUri: forward:/fallback/goals
 
         - id: event-service
           uri: http://event-service:8083
           predicates:
             - Path=/events/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: eventServiceCircuitBreaker
+                fallbackUri: forward:/fallback/events
+
+# Resilience4J Circuit Breaker Configuration
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        slidingWindowType: COUNT_BASED
+    instances:
+      wellnessResourceCircuitBreaker:
+        baseConfig: default
+      goalTrackingCircuitBreaker:
+        baseConfig: default
+      eventServiceCircuitBreaker:
+        baseConfig: default
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 3s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,circuitbreakers,circuitbreakerevents,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true

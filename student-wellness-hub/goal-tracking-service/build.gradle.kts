@@ -11,8 +11,8 @@ group = "com.gbc"
 version = "1.0-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -20,17 +20,31 @@ repositories {
     maven("https://packages.confluent.io/maven/")
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("io.swagger.core.v3:swagger-annotations:2.2.22")
+        force("io.swagger.core.v3:swagger-models:2.2.22")
+    }
+}
+
 dependencies {
     // Core Spring + MongoDB
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("io.micrometer:micrometer-registry-prometheus")
+
+    // OpenAPI / Swagger Documentation
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+    implementation("io.swagger.core.v3:swagger-annotations:2.2.22")
 
     // Kafka
     implementation("org.springframework.kafka:spring-kafka")
 
     // Avro + Schema Registry
-    implementation("io.confluent:kafka-avro-serializer:7.6.1")
+    implementation("io.confluent:kafka-avro-serializer:7.6.1") {
+        exclude(group = "io.swagger.core.v3", module = "swagger-annotations")
+    }
     implementation("org.apache.avro:avro:1.11.3")
 
     // Testing + Containers

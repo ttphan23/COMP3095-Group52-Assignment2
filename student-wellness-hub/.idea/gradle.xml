@@ -1,48 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/student-wellness-hub" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../../../Gradle/gradle-9.0.0" />
+        <option name="gradleJvm" value="17" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/event-service" />
-            <option value="$PROJECT_DIR$/goal-tracking-service" />
-            <option value="$PROJECT_DIR$/wellness-resource-service" />
+            <option value="$PROJECT_DIR$/student-wellness-hub" />
+            <option value="$PROJECT_DIR$/student-wellness-hub/event-service" />
+            <option value="$PROJECT_DIR$/student-wellness-hub/goal-tracking-service" />
+            <option value="$PROJECT_DIR$/student-wellness-hub/wellness-resource-service" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/event-service" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../../../../../../Gradle/gradle-9.0.0" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/student-wellness-hub/api-gateway" />
+        <option name="gradleJvm" value="17" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/event-service" />
-            <option value="$PROJECT_DIR$/event-service/event-service" />
-            <option value="$PROJECT_DIR$/event-service/goal-tracking-service" />
-            <option value="$PROJECT_DIR$/event-service/wellness-resource-service" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/goal-tracking-service" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../../../../../../Gradle/gradle-9.0.0" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/goal-tracking-service" />
-            <option value="$PROJECT_DIR$/goal-tracking-service/event-service" />
-            <option value="$PROJECT_DIR$/goal-tracking-service/goal-tracking-service" />
-            <option value="$PROJECT_DIR$/goal-tracking-service/wellness-resource-service" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/wellness-resource-service" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../../../../../../Gradle/gradle-9.0.0" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/wellness-resource-service" />
+            <option value="$PROJECT_DIR$/student-wellness-hub/api-gateway" />
           </set>
         </option>
       </GradleProjectSettings>

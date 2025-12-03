@@ -1,21 +1,32 @@
 package com.gbc.wellness.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "resources")
+@Schema(description = "Wellness Resource entity representing educational content and materials")
 public class Resource implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Unique identifier of the resource", example = "1", accessMode = Schema.AccessMode.READ_ONLY)
     private Long resourceId;
 
+    @Schema(description = "Title of the wellness resource", example = "Introduction to Mindfulness", required = true)
     private String title;
+
+    @Schema(description = "Detailed description of the resource", example = "A comprehensive guide to mindfulness meditation techniques")
     private String description;
+
+    @Schema(description = "Category of the resource", example = "mindfulness", 
+            allowableValues = {"fitness", "mindfulness", "nutrition", "mental-health", "sleep"})
     private String category;
+
+    @Schema(description = "URL link to the resource content", example = "https://wellness.gbc.ca/resources/mindfulness-guide")
     private String url;
 
     // Getters and setters
