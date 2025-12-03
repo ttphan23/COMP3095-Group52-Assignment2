@@ -1,21 +1,35 @@
 package com.gbc.goals;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
 @Document(collection = "goals")
+@Schema(description = "Wellness Goal entity representing student wellness objectives")
 public class Goal {
 
     @Id
+    @Schema(description = "Unique identifier of the goal", example = "507f1f77bcf86cd799439011", accessMode = Schema.AccessMode.READ_ONLY)
     private String goalId;
 
+    @Schema(description = "Title of the wellness goal", example = "Complete 30-day meditation challenge", required = true)
     private String title;
+
+    @Schema(description = "Detailed description of the goal", example = "Practice mindfulness meditation for at least 10 minutes every day for 30 days")
     private String description;
+
+    @Schema(description = "Target date for goal completion", example = "2025-02-01", required = true)
     private LocalDate targetDate;
-    private String status;   // e.g., "in-progress", "completed"
-    private String category; // e.g., "fitness", "mindfulness"
+
+    @Schema(description = "Current status of the goal", example = "in-progress", 
+            allowableValues = {"in-progress", "completed", "cancelled"})
+    private String status;
+
+    @Schema(description = "Category of the goal", example = "mindfulness", 
+            allowableValues = {"fitness", "mindfulness", "nutrition", "mental-health", "sleep"})
+    private String category;
 
     // Constructors
     public Goal() {}

@@ -25,15 +25,27 @@ public class SecurityConfig {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(ex -> ex
-                        .pathMatchers("/actuator/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        // Actuator endpoints for health checks and Prometheus metrics
+                        .pathMatchers("/actuator/**").permitAll()
+                        
+                        // Fallback endpoints for circuit breaker
+                        .pathMatchers("/fallback/**").permitAll()
+                        
+                        // Swagger UI through API Gateway - requires staff role (ADMIN)
+                        .pathMatchers("/api/*/swagger-ui/**", "/api/*/api-docs/**").hasRole("staff")
 
+                        // Resource service - staff role for write operations
                         .pathMatchers(org.springframework.http.HttpMethod.POST, "/resources/**").hasRole("staff")
                         .pathMatchers(org.springframework.http.HttpMethod.PUT,  "/resources/**").hasRole("staff")
                         .pathMatchers(org.springframework.http.HttpMethod.DELETE,"/resources/**").hasRole("staff")
 
+                        // Goal service - student role for goal creation
                         .pathMatchers(org.springframework.http.HttpMethod.POST, "/goals/**").hasRole("student")
+                        
+                        // Event service - student role for event registration
                         .pathMatchers(org.springframework.http.HttpMethod.POST, "/events/*/register").hasRole("student")
 
+                        // All other requests require authentication
                         .anyExchange().authenticated()
                 )
                 .oauth2ResourceServer(oauth -> oauth

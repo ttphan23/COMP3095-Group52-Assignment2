@@ -1,0 +1,589 @@
+{
+	"info": {
+		"_postman_id": "25df23b7-19dd-4709-8790-0ddbf8c117da",
+		"name": "Student Wellness Hub - A1",
+		"description": "Postman collection for COMP3095 Assignment 1 (Student Wellness Hub): Wellness Resource, Goal Tracking, and Event services.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48177653",
+		"_collection_link": "https://ttphan23-5803358.postman.co/workspace/Thinh's-Workspace~b223411a-202f-4f2b-8042-babd41e8fd61/collection/48177653-25df23b7-19dd-4709-8790-0ddbf8c117da?action=share&source=collection_link&creator=48177653"
+	},
+	"item": [
+		{
+			"name": "Wellness Resource Service",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{resource_base}}/actuator/health",
+							"host": [
+								"{{resource_base}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all resources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{resource_base}}/resources",
+							"host": [
+								"{{resource_base}}"
+							],
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by category (query param)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{resource_base}}/resources?category={{category}}",
+							"host": [
+								"{{resource_base}}"
+							],
+							"path": [
+								"resources"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "{{category}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by category (path alt)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{resource_base}}/resources/category/restfulness",
+							"host": [
+								"{{resource_base}}"
+							],
+							"path": [
+								"resources",
+								"category",
+								"restfulness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create resource",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Mindfulness Guide\",\n  \"description\": \"A practical guide\",\n  \"category\": \"mindfulness\",\n  \"url\": \"http://example.com/mindfulness\"\n}"
+						},
+						"url": {
+							"raw": "{{resource_base}}/resources",
+							"host": [
+								"{{resource_base}}"
+							],
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update resource",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Mindfulness Guide - Updated\",\n  \"description\": \"Updated desc\",\n  \"category\": \"mindfulness\",\n  \"url\": \"http://example.com/mindfulness\"\n}"
+						},
+						"url": {
+							"raw": "{{resource_base}}/resources/18",
+							"host": [
+								"{{resource_base}}"
+							],
+							"path": [
+								"resources",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete resource",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{resource_base}}/resources/23",
+							"host": [
+								"{{resource_base}}"
+							],
+							"path": [
+								"resources",
+								"23"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Goal Tracking Service",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{goals_base}}/actuator/health",
+							"host": [
+								"{{goals_base}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all goals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{goals_base}}/goals",
+							"host": [
+								"{{goals_base}}"
+							],
+							"path": [
+								"goals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{goals_base}}/goals?status={{status}}",
+							"host": [
+								"{{goals_base}}"
+							],
+							"path": [
+								"goals"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "{{status}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create goal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Meditate daily\",\n  \"description\": \"10 mins\",\n  \"targetDate\": \"2025-12-01\",\n  \"status\": \"in-progress\",\n  \"category\": \"mindfulness\"\n}"
+						},
+						"url": {
+							"raw": "{{goals_base}}/goals",
+							"host": [
+								"{{goals_base}}"
+							],
+							"path": [
+								"goals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update goal",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Meditate daily - updated\",\n  \"description\": \"15 mins\",\n  \"targetDate\": \"2025-12-05\",\n  \"status\": \"in-progress\",\n  \"category\": \"mindfulness\"\n}"
+						},
+						"url": {
+							"raw": "{{goals_base}}/goals/690ec073b8a4886174233c24",
+							"host": [
+								"{{goals_base}}"
+							],
+							"path": [
+								"goals",
+								"690ec073b8a4886174233c24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete goal",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{goals_base}}/goals/690ec073b8a4886174233c24",
+							"host": [
+								"{{goals_base}}"
+							],
+							"path": [
+								"goals",
+								"690ec073b8a4886174233c24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark goal complete",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{goals_base}}/goals/690ec073b8a4886174233c24/complete",
+							"host": [
+								"{{goals_base}}"
+							],
+							"path": [
+								"goals",
+								"690ec073b8a4886174233c24",
+								"complete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Suggested resources for a goal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{goals_base}}/goals/690eb5b39180291959c073e8/resources",
+							"host": [
+								"{{goals_base}}"
+							],
+							"path": [
+								"goals",
+								"690eb5b39180291959c073e8",
+								"resources"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event Service",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{events_base}}/actuator/health",
+							"host": [
+								"{{events_base}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{events_base}}/events",
+							"host": [
+								"{{events_base}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{events_base}}/events?date={{date}}",
+							"host": [
+								"{{events_base}}"
+							],
+							"path": [
+								"events"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "{{date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{events_base}}/events?location={{location}}",
+							"host": [
+								"{{events_base}}"
+							],
+							"path": [
+								"events"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "{{location}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Yoga Workshop\",\n  \"description\": \"Wellness session\",\n  \"date\": \"2025-11-22\",\n  \"location\": \"Campus\",\n  \"capacity\": 50,\n  \"category\": \"yoga\"\n}"
+						},
+						"url": {
+							"raw": "{{events_base}}/events",
+							"host": [
+								"{{events_base}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update event",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Yoga Workshop - Updated\",\n  \"description\": \"Updated details\",\n  \"date\": \"2025-11-22\",\n  \"location\": \"Campus Hall\",\n  \"capacity\": 60,\n  \"category\": \"yoga\"\n}"
+						},
+						"url": {
+							"raw": "{{events_base}}/events/2",
+							"host": [
+								"{{events_base}}"
+							],
+							"path": [
+								"events",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete event",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{events_base}}/events/{{eventId}}",
+							"host": [
+								"{{events_base}}"
+							],
+							"path": [
+								"events",
+								"{{eventId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register for event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{events_base}}/events/3/register?studentEmail=alice@g.bc.ca",
+							"host": [
+								"{{events_base}}"
+							],
+							"path": [
+								"events",
+								"3",
+								"register"
+							],
+							"query": [
+								{
+									"key": "studentEmail",
+									"value": "alice@g.bc.ca"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resources for event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{events_base}}/events/4/resources",
+							"host": [
+								"{{events_base}}"
+							],
+							"path": [
+								"events",
+								"4",
+								"resources"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "resource_base",
+			"value": "http://localhost:8081"
+		},
+		{
+			"key": "goals_base",
+			"value": "http://localhost:8082"
+		},
+		{
+			"key": "events_base",
+			"value": "http://localhost:8083"
+		},
+		{
+			"key": "category",
+			"value": "mindfulness"
+		},
+		{
+			"key": "status",
+			"value": "in-progress"
+		},
+		{
+			"key": "date",
+			"value": "2025-11-20"
+		},
+		{
+			"key": "location",
+			"value": "Campus"
+		},
+		{
+			"key": "resourceId",
+			"value": "1"
+		},
+		{
+			"key": "goalId",
+			"value": "<paste from create goal response>"
+		},
+		{
+			"key": "eventId",
+			"value": "1"
+		}
+	]
+}

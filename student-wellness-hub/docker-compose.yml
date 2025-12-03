@@ -176,6 +176,10 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      kafka:
+        condition: service_started
+      schema-registry:
+        condition: service_started
       wellness-resource-service:
         condition: service_started
     networks:
