@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.34/ec547ef414ab1d2c040118fb9c1c265ada63af14/lombok-1.18.34.jar" />
+        </processorPath>
+        <module name="student-wellness-hub.api-gateway.main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="student-wellness-hub.main" target="17" />
+      <module name="student-wellness-hub.test" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="api-gateway.main" options="-parameters" />
+      <module name="api-gateway.test" options="-parameters" />
+      <module name="student-wellness-hub.api-gateway" options="-parameters" />
+      <module name="student-wellness-hub.api-gateway.main" options="-parameters" />
+      <module name="student-wellness-hub.api-gateway.test" options="-parameters" />
+      <module name="student-wellness-hub.event-service" options="-parameters" />
+      <module name="student-wellness-hub.event-service.main" options="-parameters" />
+      <module name="student-wellness-hub.event-service.test" options="-parameters" />
+      <module name="student-wellness-hub.goal-tracking-service" options="-parameters" />
+      <module name="student-wellness-hub.goal-tracking-service.main" options="-parameters" />
+      <module name="student-wellness-hub.goal-tracking-service.test" options="-parameters" />
+      <module name="student-wellness-hub.wellness-resource-service" options="-parameters" />
+      <module name="student-wellness-hub.wellness-resource-service.main" options="-parameters" />
+      <module name="student-wellness-hub.wellness-resource-service.test" options="-parameters" />
+    </option>
+  </component>
+</project>

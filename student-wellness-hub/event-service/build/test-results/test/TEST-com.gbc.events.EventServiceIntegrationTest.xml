@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.gbc.events.EventServiceIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-12-05T12:23:28.045Z" hostname="DESKTOP-0CTPI97" time="0.761">
+  <properties/>
+  <testcase name="shouldPublishEvent()" classname="com.gbc.events.EventServiceIntegrationTest" time="0.761"/>
+  <system-out><![CDATA[07:23:10.922 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+07:23:10.928 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+07:23:11.124 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+07:23:11.359 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+07:23:11.360 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+07:23:11.373 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 28.4.0
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 15846 MB
+07:23:11.634 [Test worker] INFO tc.testcontainers/ryuk:0.7.0 -- Creating container for image: testcontainers/ryuk:0.7.0
+07:23:11.934 [Test worker] INFO tc.testcontainers/ryuk:0.7.0 -- Container testcontainers/ryuk:0.7.0 is starting: b658fece49ae0faa2ca70f847a286c9edcf921a2235b1c97a3d6bd479c149fcc
+07:23:12.377 [Test worker] INFO tc.testcontainers/ryuk:0.7.0 -- Container testcontainers/ryuk:0.7.0 started in PT0.7429041S
+07:23:12.413 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+07:23:12.413 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+07:23:12.414 [Test worker] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+07:23:12.415 [Test worker] INFO tc.confluentinc/cp-kafka:7.6.1 -- Creating container for image: confluentinc/cp-kafka:7.6.1
+07:23:12.572 [Test worker] INFO tc.confluentinc/cp-kafka:7.6.1 -- Container confluentinc/cp-kafka:7.6.1 is starting: 3efbbd34ac5e76563d1e3b4d6b9b2fc7b603dc3106ac2fe2c85b0dc4fae17083
+07:23:17.241 [Test worker] INFO tc.confluentinc/cp-kafka:7.6.1 -- Container confluentinc/cp-kafka:7.6.1 started in PT4.8255705S
+07:23:17.241 [Test worker] INFO tc.postgres:15 -- Creating container for image: postgres:15
+07:23:17.359 [Test worker] INFO tc.postgres:15 -- Container postgres:15 is starting: 84bbf87a4f9cdec09a0ad8f03b02b7028ce1ca3284f77278261fcc90e003c67c
+07:23:19.858 [Test worker] INFO tc.postgres:15 -- Container postgres:15 started in PT2.6165681S
+07:23:19.859 [Test worker] INFO tc.postgres:15 -- Container is started (JDBC URL: jdbc:postgresql://localhost:63533/wellnessdb?loggerLevel=OFF)
+07:23:19.944 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.gbc.events.EventServiceIntegrationTest]: EventServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+07:23:20.086 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.gbc.events.EventServiceApplication for test class com.gbc.events.EventServiceIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2025-12-05T07:23:20.505-05:00  INFO 6196 --- [    Test worker] c.g.events.EventServiceIntegrationTest   : Starting EventServiceIntegrationTest using Java 21.0.4 with PID 6196 (started by 여치멸치 in C:\Users\Hyechan\Documents\comp3095-assign2\COMP3095-Group52-Assignment2\student-wellness-hub\event-service)
+2025-12-05T07:23:20.506-05:00  INFO 6196 --- [    Test worker] c.g.events.EventServiceIntegrationTest   : No active profile set, falling back to 1 default profile: "default"
+2025-12-05T07:23:21.536-05:00  INFO 6196 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-05T07:23:21.585-05:00  INFO 6196 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interface.
+2025-12-05T07:23:22.721-05:00  INFO 6196 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-12-05T07:23:22.745-05:00  INFO 6196 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-05T07:23:22.745-05:00  INFO 6196 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-12-05T07:23:22.856-05:00  INFO 6196 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-05T07:23:22.857-05:00  INFO 6196 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2329 ms
+2025-12-05T07:23:23.457-05:00  INFO 6196 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-05T07:23:23.582-05:00  INFO 6196 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-12-05T07:23:23.650-05:00  INFO 6196 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-05T07:23:24.011-05:00  INFO 6196 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-05T07:23:24.050-05:00  INFO 6196 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-05T07:23:24.198-05:00  INFO 6196 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@360ccb68
+2025-12-05T07:23:24.200-05:00  INFO 6196 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-05T07:23:25.208-05:00  INFO 6196 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: alter table if exists event_registered_students drop constraint if exists FK83i4wxlesh213th2g2bsc37p7
+2025-12-05T07:23:25.232-05:00  WARN 6196 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-12-05T07:23:25.233-05:00  WARN 6196 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "event_registered_students" does not exist, skipping
+Hibernate: drop table if exists event_registered_students cascade
+2025-12-05T07:23:25.233-05:00  WARN 6196 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-12-05T07:23:25.234-05:00  WARN 6196 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "event_registered_students" does not exist, skipping
+Hibernate: drop table if exists events cascade
+2025-12-05T07:23:25.235-05:00  WARN 6196 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-12-05T07:23:25.235-05:00  WARN 6196 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "events" does not exist, skipping
+Hibernate: create table event_registered_students (event_event_id bigint not null, registered_students varchar(255))
+Hibernate: create table events (capacity integer not null, date date, event_id bigint generated by default as identity, category varchar(255), description varchar(255), location varchar(255), title varchar(255), primary key (event_id))
+Hibernate: alter table if exists event_registered_students add constraint FK83i4wxlesh213th2g2bsc37p7 foreign key (event_event_id) references events
+2025-12-05T07:23:25.262-05:00  INFO 6196 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-05T07:23:26.509-05:00  WARN 6196 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-05T07:23:27.879-05:00  INFO 6196 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-12-05T07:23:27.964-05:00  INFO 6196 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 63569 (http) with context path '/'
+2025-12-05T07:23:27.976-05:00  INFO 6196 --- [    Test worker] c.g.events.EventServiceIntegrationTest   : Started EventServiceIntegrationTest in 7.758 seconds (process running for 17.765)
+2025-12-05T07:23:28.579-05:00  INFO 6196 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-05T07:23:28.580-05:00  INFO 6196 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-05T07:23:28.580-05:00  INFO 6196 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+Hibernate: insert into events (capacity,category,date,description,location,title) values (?,?,?,?,?,?) returning event_id
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\Hyechan\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.19\154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1\byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
