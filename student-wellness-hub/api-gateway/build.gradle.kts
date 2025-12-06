@@ -15,7 +15,7 @@ repositories {
     mavenCentral()
 }
 
-extra["springCloudVersion"] = "2023.0.6"
+extra["springCloudVersion"] = "2023.0.3"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")

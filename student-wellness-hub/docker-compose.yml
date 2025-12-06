@@ -200,7 +200,7 @@ services:
       WELLNESS_SERVICE_URL: http://wellness-resource-service:8081
       GOAL_SERVICE_URL: http://goal-tracking-service:8082
       EVENT_SERVICE_URL: http://event-service:8083
-      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: http://keycloak:8080/realms/wellnesshub
+
     depends_on:
       - keycloak
       - wellness-resource-service
