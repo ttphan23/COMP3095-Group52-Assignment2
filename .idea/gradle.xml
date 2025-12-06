@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/student-wellness-hub" />
+            <option value="$PROJECT_DIR$/student-wellness-hub/api-gateway" />
             <option value="$PROJECT_DIR$/student-wellness-hub/event-service" />
             <option value="$PROJECT_DIR$/student-wellness-hub/goal-tracking-service" />
             <option value="$PROJECT_DIR$/student-wellness-hub/wellness-resource-service" />

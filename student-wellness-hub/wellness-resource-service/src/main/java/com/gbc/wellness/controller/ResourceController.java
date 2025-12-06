@@ -118,4 +118,9 @@ public class ResourceController {
             @PathVariable Long id) {
         service.deleteResource(id);
     }
+
+    @GetMapping("/protected")
+    public String protectedEndpoint() {
+        return "ACCESS OK";
+    }
 }

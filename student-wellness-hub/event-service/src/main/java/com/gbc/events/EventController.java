@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import com.gbc.events.dto.ResourceDto;
 import java.util.List;
 import java.util.Map;
 
@@ -94,14 +94,16 @@ public class EventController {
             @ApiResponse(responseCode = "404", description = "Event not found", content = @Content)
     })
     @GetMapping("/{id}/resources")
-    public ResponseEntity<?> getResourcesForEvent(
+    public ResponseEntity<List<ResourceDto>> getResourcesForEvent(
             @Parameter(description = "Event ID", required = true)
             @PathVariable Long id) {
+
         Event event = repository.findById(id).orElse(null);
         if (event == null) {
             return ResponseEntity.notFound().build();
         }
-        List<Map<String, Object>> resources = service.getResourcesForEvent(event);
+
+        List<ResourceDto> resources = service.getResourcesForEvent(event.getEventId());
         return ResponseEntity.ok(resources);
     }
 

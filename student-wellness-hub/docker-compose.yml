@@ -1,6 +1,7 @@
 version: "3.8"
 
 services:
+
   postgres:
     image: postgres:15
     container_name: postgres
@@ -13,7 +14,7 @@ services:
       POSTGRES_DB: wellnessdb
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./postgres-init:/docker-entrypoint-initdb.d   # creates keycloak DB on first boot
+      - ./postgres-init:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -59,10 +60,9 @@ services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.6.1
     container_name: zookeeper
-    restart: always
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEOOKER_TICK_TIME: 2000
     ports:
       - "2181:2181"
     networks:
@@ -71,7 +71,6 @@ services:
   kafka:
     image: confluentinc/cp-kafka:7.6.1
     container_name: kafka
-    restart: always
     depends_on:
       - zookeeper
     ports:
@@ -80,12 +79,9 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-
-      # Internal Docker clients use kafka:29092
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
     networks:
@@ -94,11 +90,10 @@ services:
   schema-registry:
     image: confluentinc/cp-schema-registry:7.6.1
     container_name: schema-registry
-    restart: always
     depends_on:
       - kafka
     ports:
-      - "8085:8081"   # host 8085 -> container 8081
+      - "8085:8081"
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka:29092
@@ -109,7 +104,9 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:25.0.6
     container_name: keycloak
-    command: start-dev
+    command: start-dev --import-realm
+    volumes:
+      - ./keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
@@ -117,13 +114,17 @@ services:
       KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
       KC_DB_USERNAME: postgres
       KC_DB_PASSWORD: password
+      KC_METRICS_ENABLED: "true"
+      KC_FEATURES: token-exchange
+      KC_IMPORT: /opt/keycloak/data/import/realm-export.json
     ports:
-      - "8090:8080"   # host 8090 so it doesn't clash with gateway
+      - "8090:8080"
     depends_on:
       postgres:
         condition: service_healthy
     networks:
       - student-network
+
 
   wellness-resource-service:
     build: ./wellness-resource-service
@@ -142,46 +143,50 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8081/actuator/health || exit 1"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
     networks:
       - student-network
 
   goal-tracking-service:
     build: ./goal-tracking-service
     container_name: goal-tracking-service
-    restart: always
     ports:
       - "8082:8082"
     environment:
       SPRING_DATA_MONGODB_HOST: mongodb
       SPRING_DATA_MONGODB_PORT: 27017
       SPRING_DATA_MONGODB_DATABASE: student_wellness
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
     depends_on:
       mongodb:
         condition: service_healthy
-      wellness-resource-service:
-        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8082/actuator/health || exit 1"]
     networks:
       - student-network
 
   event-service:
     build: ./event-service
     container_name: event-service
-    restart: always
     ports:
       - "8083:8083"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/wellnessdb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: password
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      SCHEMA_REGISTRY_URL: http://schema-registry:8081
     depends_on:
       postgres:
         condition: service_healthy
       kafka:
         condition: service_started
-      schema-registry:
-        condition: service_started
-      wellness-resource-service:
-        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8083/actuator/health || exit 1"]
     networks:
       - student-network
 
@@ -189,21 +194,24 @@ services:
     build: ./api-gateway
     container_name: api-gateway
     ports:
-      - "8080:8080"
+      - "8084:8080"
     environment:
       SPRING_PROFILES_ACTIVE: docker
-      KEYCLOAK_ISSUER_URI: http://keycloak:8080/realms/wellnesshub
+      WELLNESS_SERVICE_URL: http://wellness-resource-service:8081
+      GOAL_SERVICE_URL: http://goal-tracking-service:8082
+      EVENT_SERVICE_URL: http://event-service:8083
+
     depends_on:
       - keycloak
       - wellness-resource-service
-      - goal-tracking-service
-      - event-service
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
     networks:
       - student-network
 
 volumes:
-  mongo_data:
   postgres_data:
+  mongo_data:
   redis_data:
 
 networks:
