@@ -9,6 +9,11 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import java.util.Collections;
+
 @Service
 public class GoalService {
 
@@ -77,8 +82,16 @@ public class GoalService {
     }
 
     @SuppressWarnings("unchecked")
+    @CircuitBreaker(name = "goalResourcesClient", fallbackMethod = "getResourcesForGoalFallback")
+    @Retry(name = "goalResourcesClient")
+    @RateLimiter(name = "goalResourcesClient")
     public List<Map<String, Object>> getResourcesForGoal(Goal goal) {
         String url = "http://localhost:8082/resources/category/" + goal.getCategory();
         return restTemplate.getForObject(url, List.class);
+    }
+
+    public List<Map<String, Object>> getResourcesForGoalFallback(Goal goal, Throwable t) {
+        System.out.println("⚠️ goal-service fallback(getResourcesForGoal): " + t.getMessage());
+        return Collections.emptyList();
     }
 }

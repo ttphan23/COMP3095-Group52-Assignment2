@@ -1,13 +1,22 @@
 package com.gbc.events;
 
+import com.gbc.events.dto.ResourceDto;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class EventService {
+
+    private static final Logger log = LoggerFactory.getLogger(EventService.class);
 
     private final EventRepository repository;
     private final RestTemplate restTemplate;
@@ -49,9 +58,39 @@ public class EventService {
         return repository.save(e);
     }
 
-    @SuppressWarnings("unchecked")
-    public List<Map<String, Object>> getResourcesForEvent(Event event) {
-        String url = "http://wellness-resource-service:8081/resources/category/" + event.getCategory();
-        return restTemplate.getForObject(url, List.class);
+    // Resilience4j – CircuitBreaker + Retry + RateLimiter
+    @CircuitBreaker(name = "resourceService", fallbackMethod = "getResourcesForEventFallback")
+    @Retry(name = "resourceService")
+    @RateLimiter(name = "resourceService")
+    public List<ResourceDto> getResourcesForEvent(Long eventId) {
+
+        log.info(">>> getResourcesForEvent called, eventId={}", eventId);
+
+        Event event = repository.findById(eventId)
+                .orElseThrow(() -> new RuntimeException("Event not found: " + eventId));
+
+        String category = event.getCategory();
+        String url = "http://wellness-resource-service:8081/resources/category/" + category;
+
+        try {
+            ResourceDto[] response = restTemplate.getForObject(url, ResourceDto[].class);
+
+            if (response == null) {
+                return List.of();
+            }
+
+            return Arrays.asList(response);
+
+        } catch (Exception ex) {
+
+            return getResourcesForEventFallback(eventId, ex);
+        }
+    }
+
+    public List<ResourceDto> getResourcesForEventFallback(Long eventId, Throwable t) {
+        log.warn(">>> [Fallback] eventId={}, reason={} : {}",
+                eventId, t.getClass().getSimpleName(), t.getMessage());
+
+        return List.of();
     }
 }

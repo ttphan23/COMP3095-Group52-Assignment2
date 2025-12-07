@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.990s</div>
+<div class="counter">4.195s</div>
 <p>duration</p>
 </div>
 </td>
@@ -58,19 +58,16 @@
 </tr>
 </table>
 </div>
-<div id="tabs">
+<div class="tab-container">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#">Tests</a>
 </li>
 <li>
-<a href="#tab1">Standard output</a>
-</li>
-<li>
-<a href="#tab2">Standard error</a>
+<a href="#">Standard output</a>
 </li>
 </ul>
-<div id="tab0" class="tab">
+<div class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -82,36 +79,36 @@
 </thead>
 <tr>
 <td class="success">contextLoads()</td>
-<td class="success">1.990s</td>
+<td class="success">4.195s</td>
 <td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>22:37:01.199 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.gbc.wellness.WellnessResourceServiceIntegrationTest]: WellnessResourceServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-22:37:01.822 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.gbc.wellness.WellnessResourceServiceApplication for test class com.gbc.wellness.WellnessResourceServiceIntegrationTest
-22:37:02.438 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
-22:37:02.449 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
-22:37:02.966 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
-22:37:03.711 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
-22:37:03.718 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
-22:37:03.790 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
-  Server Version: 28.3.3
+<pre>23:29:49.097 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.gbc.wellness.WellnessResourceServiceIntegrationTest]: WellnessResourceServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:29:49.197 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.gbc.wellness.WellnessResourceServiceApplication for test class com.gbc.wellness.WellnessResourceServiceIntegrationTest
+23:29:49.315 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+23:29:49.317 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+23:29:49.496 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+23:29:49.744 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+23:29:49.745 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+23:29:49.765 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 28.4.0
   API Version: 1.51
   Operating System: Docker Desktop
-  Total Memory: 15805 MB
-22:37:04.105 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Creating container for image: testcontainers/ryuk:0.5.1
-22:37:05.154 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Container testcontainers/ryuk:0.5.1 is starting: cbdb1e7fbc898f5295a19646cef07d373c51b78d1c232eaa7b8d402cc0f91d5d
-22:37:06.223 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Container testcontainers/ryuk:0.5.1 started in PT2.1174323S
-22:37:06.249 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
-22:37:06.251 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
-22:37:06.253 [Test worker] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
-22:37:06.256 [Test worker] INFO tc.postgres:15 -- Creating container for image: postgres:15
-22:37:06.574 [Test worker] INFO tc.postgres:15 -- Container postgres:15 is starting: bba00cfc8e6b8d39b4d95e1d9d46ebea9922b0c5973ec16ed78f03a57b6b8a7e
-22:37:10.120 [Test worker] INFO tc.postgres:15 -- Container postgres:15 started in PT3.8645693S
-22:37:10.123 [Test worker] INFO tc.postgres:15 -- Container is started (JDBC URL: jdbc:postgresql://localhost:62552/wellnessdb?loggerLevel=OFF)
+  Total Memory: 15846 MB
+23:29:49.906 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Creating container for image: testcontainers/ryuk:0.5.1
+23:29:50.126 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Container testcontainers/ryuk:0.5.1 is starting: b1ec997b97948e6d309abb02572602122888688228cc1d738a8aa30029f2e530
+23:29:50.660 [Test worker] INFO tc.testcontainers/ryuk:0.5.1 -- Container testcontainers/ryuk:0.5.1 started in PT0.7532581S
+23:29:50.663 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+23:29:50.663 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+23:29:50.664 [Test worker] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+23:29:50.664 [Test worker] INFO tc.postgres:15 -- Creating container for image: postgres:15
+23:29:50.737 [Test worker] INFO tc.postgres:15 -- Container postgres:15 is starting: aafc96a6a34cf2c1d263bb99b228014c88131d1e90af6d3e56c97d9da4cf0bdf
+23:29:52.261 [Test worker] INFO tc.postgres:15 -- Container postgres:15 started in PT1.5972546S
+23:29:52.262 [Test worker] INFO tc.postgres:15 -- Container is started (JDBC URL: jdbc:postgresql://localhost:63441/wellnessdb?loggerLevel=OFF)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -122,38 +119,28 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2025-11-07T22:37:11.392-05:00  INFO 19300 --- [    Test worker] w.WellnessResourceServiceIntegrationTest : Starting WellnessResourceServiceIntegrationTest using Java 23.0.1 with PID 19300 (started by phant in C:\Users\phant\Desktop\comp3095-group\COMP3095-Group52-Assignment1\student-wellness-hub\wellness-resource-service)
-2025-11-07T22:37:11.396-05:00  INFO 19300 --- [    Test worker] w.WellnessResourceServiceIntegrationTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2025-11-07T22:37:14.605-05:00  INFO 19300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-11-07T22:37:14.609-05:00  INFO 19300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-07T22:37:15.093-05:00  INFO 19300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 455 ms. Found 1 JPA repository interface.
-2025-11-07T22:37:15.157-05:00  INFO 19300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-11-07T22:37:15.164-05:00  INFO 19300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2025-11-07T22:37:15.209-05:00  INFO 19300 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.gbc.wellness.repository.ResourceRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-11-07T22:37:15.210-05:00  INFO 19300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
-2025-11-07T22:37:19.342-05:00  INFO 19300 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-07T22:37:19.585-05:00  INFO 19300 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-11-07T22:37:19.857-05:00  INFO 19300 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-11-07T22:37:21.237-05:00  INFO 19300 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-07T22:37:21.471-05:00  INFO 19300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-07T22:37:22.236-05:00  INFO 19300 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43a72f0f
-2025-11-07T22:37:22.245-05:00  INFO 19300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-07T22:37:26.142-05:00  INFO 19300 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-04T23:29:52.584-05:00  INFO 46648 --- [    Test worker] w.WellnessResourceServiceIntegrationTest : Starting WellnessResourceServiceIntegrationTest using Java 17.0.17 with PID 46648 (started by 여치멸치 in C:\Users\Hyechan\Documents\comp3095-assign2\COMP3095-Group52-Assignment2\student-wellness-hub\student-wellness-hub\wellness-resource-service)
+2025-12-04T23:29:52.585-05:00  INFO 46648 --- [    Test worker] w.WellnessResourceServiceIntegrationTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-12-04T23:29:53.423-05:00  INFO 46648 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-12-04T23:29:53.425-05:00  INFO 46648 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-04T23:29:53.554-05:00  INFO 46648 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 121 ms. Found 1 JPA repository interface.
+2025-12-04T23:29:53.569-05:00  INFO 46648 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-12-04T23:29:53.570-05:00  INFO 46648 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-12-04T23:29:53.581-05:00  INFO 46648 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.gbc.wellness.repository.ResourceRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-12-04T23:29:53.581-05:00  INFO 46648 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2025-12-04T23:29:54.516-05:00  INFO 46648 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-04T23:29:54.633-05:00  INFO 46648 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-12-04T23:29:54.688-05:00  INFO 46648 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-04T23:29:55.120-05:00  INFO 46648 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-04T23:29:55.165-05:00  INFO 46648 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-04T23:29:55.325-05:00  INFO 46648 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4ef0bc5b
+2025-12-04T23:29:55.327-05:00  INFO 46648 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-04T23:29:56.277-05:00  INFO 46648 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: create table resources (resource_id bigint generated by default as identity, category varchar(255), description varchar(255), title varchar(255), url varchar(255), primary key (resource_id))
-2025-11-07T22:37:26.311-05:00  INFO 19300 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-07T22:37:29.103-05:00  WARN 19300 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-07T22:37:33.533-05:00  INFO 19300 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2025-11-07T22:37:33.833-05:00  INFO 19300 --- [    Test worker] w.WellnessResourceServiceIntegrationTest : Started WellnessResourceServiceIntegrationTest in 23.529 seconds (process running for 37.042)
-</pre>
-</span>
-</div>
-<div id="tab2" class="tab">
-<h2>Standard error</h2>
-<span class="code">
-<pre>WARNING: A Java agent has been loaded dynamically (C:\Users\phant\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.19\154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1\byte-buddy-agent-1.14.19.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2025-12-04T23:29:56.383-05:00  INFO 46648 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-04T23:29:56.891-05:00  WARN 46648 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-04T23:29:57.722-05:00  INFO 46648 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2025-12-04T23:29:57.792-05:00  INFO 46648 --- [    Test worker] w.WellnessResourceServiceIntegrationTest : Started WellnessResourceServiceIntegrationTest in 5.485 seconds (process running for 9.39)
 </pre>
 </span>
 </div>
@@ -165,7 +152,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10</a> at Nov 7, 2025, 10:37:38 p.m.</p>
+<a href="https://www.gradle.org">Gradle 9.0.0</a> at 2025. 12. 4. 오후 11:30:08</p>
 </div>
 </div>
 </body>
